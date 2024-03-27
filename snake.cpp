@@ -64,14 +64,14 @@ void game(void)
 
     for (int i = 0; i < MOVE_DELAY; i++)
     {
+        handle_input(prev_dir, &next_dir);
         wait();
     }
     
     while (win == false && lose == false) // 승리 혹은 패배 시 탈출, ESC 누르면 프로그램 전체 종료
     {
         clear();
-        handle_input(prev_dir, &next_dir);
-
+        
         switch (next_dir)
         {
             case 'U': // 방향이 위 일 때
