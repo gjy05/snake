@@ -231,7 +231,7 @@ void game(void)
 	        wait();
         }
     }
-    if (lose) // 질 경우
+    if (lose == true) // 질 경우
     {
         draw(BOARD_SIZE / 2 - 4, BOARD_SIZE / 2 - 1, "YOU LOSE!");
         draw(BOARD_SIZE / 2 - 9, BOARD_SIZE / 2, "Try Again? (Enter)");
