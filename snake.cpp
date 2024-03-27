@@ -44,10 +44,8 @@ void game(void)
     {
         snake[0] = {BOARD_SIZE / 2, BOARD_SIZE / 2};
     }
-
     snake_xy tmp[2] = {}; // 뱀이 이동할 때에 원래 몸의 좌표를 저장하기 위한 공간
-
-    int head_index = 0; // 머리의 인덱스, 또는 (뱀의 길이 - 1), 또는 (점수 / 10)
+    int head_index = 0; // 뱀 머리의 인덱스, 또는 (뱀 길이 - 1), 또는 (점수 / 10)
 
     char prev_dir = 'R'; // 뱀의 이전 이동 방향. U(위), D(아래), L(왼쪽), R(오른쪽) 값을 가지도록 함, 초기값 = R
     char next_dir = 'R'; // 뱀의 다음 이동 방향. U(위), D(아래), L(왼쪽), R(오른쪽) 값을 가지도록 함, 초기값 = R
@@ -60,9 +58,9 @@ void game(void)
     bool lose = false;
     
     clear();
-    draw_game(snake, head_index, apple_x, apple_y);
+    draw_game(snake, head_index, apple_x, apple_y); // 처음에 모든 요소를 그려주고 루프로 들어간다
 
-    for (int i = 0; i < MOVE_DELAY; i++)
+    for (int i = 0; i < MOVE_DELAY; i++) // 처음에 입력을 받고 루프로 들어간다
     {
         handle_input(prev_dir, &next_dir);
         wait();
@@ -70,8 +68,8 @@ void game(void)
     
     while (win == false && lose == false) // 승리 혹은 패배 시 탈출, ESC 누르면 프로그램 전체 종료
     {
-        clear();
-        
+        clear(); // 이전 프레임 클리어
+
         switch (next_dir)
         {
             case 'U': // 방향이 위 일 때
@@ -214,7 +212,7 @@ void game(void)
                     break;
         }
 
-        draw_game(snake, head_index, apple_x, apple_y);
+        draw_game(snake, head_index, apple_x, apple_y); // 요소 계산 후 프레임을 그려준다.
         prev_dir = next_dir;
         for (int i = 0; i < MOVE_DELAY; i++)
         {
@@ -222,7 +220,6 @@ void game(void)
             wait();
         }
     }
-
     
     if (win == true) // 이길 경우
     {
