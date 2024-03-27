@@ -218,6 +218,7 @@ void game(void)
         prev_dir = next_dir;
         for (int i = 0; i < MOVE_DELAY; i++)
         {
+            handle_input(prev_dir, &next_dir);
             wait();
         }
     }
